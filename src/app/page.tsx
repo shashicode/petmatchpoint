@@ -103,7 +103,7 @@ export default function Home() {
               className="fa-solid fa-dog mr-2 text-white"
               width={24}
             />
-            <p className="text-2xl text-white">Singup</p>
+            <p className="text-2xl text-white">Signup</p>
           </Link>
         </div>
         {/* User auth ends */}
