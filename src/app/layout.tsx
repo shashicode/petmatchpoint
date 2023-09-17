@@ -5,8 +5,10 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Pet Match Point',
-  description: 'Find your furry friend',
+  title: 'Dog Buying, Selling, Adoption, and Pet Toys | PetMatchPoint.com',
+  description: 'Explore a wide range of dogs for sale, adoption opportunities, and high-quality pet toys on our website. Find your perfect canine companion today.',
+  keywords: 'dog buying, dog selling, dog adoption, pet toys, canine companions, adopt a dog, buy a dog, dog breeders, dog toys, pet supplies',
+  robots: 'index, follow',
 }
 
 export default function RootLayout({

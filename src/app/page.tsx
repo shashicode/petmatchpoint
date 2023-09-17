@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+// import Script from "next/script";
 
 import { Open_Sans } from "next/font/google";
 const opensans = Open_Sans({ subsets: ["latin"] });
 
-// import ReactGA from 'react-ga';
-// ReactGA.initialize('UA-407267664');
-// ReactGA.pageview(window.location.pathname + window.location.search)
+import ReactGA from "react-ga4";
+ReactGA.initialize('G-0THRQG1EXX');
 
 // Font icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,6 +19,14 @@ import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
+  ReactGA.event({
+    category: "landingpage",
+    action: "landing-page",
+    label: "landing Page",
+    value: 99,
+    nonInteraction: true,
+    transport: "xhr",
+  });
   return (
     <main className={opensans.className}>
       <div className="min-[2000px]:max-w-screen-2xl min-[2000px]:m-auto">
