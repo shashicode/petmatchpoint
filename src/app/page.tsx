@@ -4,6 +4,10 @@ import Link from "next/link";
 import { Open_Sans } from "next/font/google";
 const opensans = Open_Sans({ subsets: ["latin"] });
 
+// import ReactGA from 'react-ga';
+// ReactGA.initialize('UA-407267664');
+// ReactGA.pageview(window.location.pathname + window.location.search)
+
 // Font icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDog } from "@fortawesome/free-solid-svg-icons";
@@ -85,22 +89,22 @@ export default function Home() {
 
         {/* User auth starts */}
         <div className="flex items-center text-right justify-end mr-8">
-          <p className="flex p-4 bg-emerald-500 rounded-2xl">
+          <Link href="/coming" className="flex p-4 bg-emerald-500 rounded-2xl">
             <FontAwesomeIcon
               icon={faRightToBracket}
               className="fa-solid fa-dog mr-2 text-white"
               width={24}
             />
             <p className="text-2xl text-white">Login</p>
-          </p>
-          <p className="flex p-4 bg-emerald-500 ml-4 rounded-2xl">
+          </Link>
+          <Link href="/coming" className="flex p-4 bg-emerald-500 ml-4 rounded-2xl">
             <FontAwesomeIcon
               icon={faUserPlus}
               className="fa-solid fa-dog mr-2 text-white"
               width={24}
             />
             <p className="text-2xl text-white">Singup</p>
-          </p>
+          </Link>
         </div>
         {/* User auth ends */}
       </div>
