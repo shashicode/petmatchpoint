@@ -106,7 +106,7 @@ export default function Navbar() {
 
       {/* User auth starts */}
       <div className="hidden lg:flex items-center text-right justify-end mr-8">
-        <Link href="/coming" className="flex p-4 bg-emerald-500 rounded-2xl">
+        <Link href="/auth/login" className="flex p-4 bg-emerald-500 rounded-2xl">
           <FontAwesomeIcon
             icon={faRightToBracket}
             className="fa-solid fa-dog mr-2 mt-2 text-white"
@@ -115,7 +115,7 @@ export default function Navbar() {
           <p className="text-2xl text-white">Login</p>
         </Link>
         <Link
-          href="/coming"
+          href="/auth/signup"
           className="flex p-4 bg-emerald-500 ml-4 rounded-2xl"
         >
           <FontAwesomeIcon
@@ -182,7 +182,7 @@ export default function Navbar() {
           {/* User login */}
           <div className="flex flex-col ml-10 mb-4 -mt-10">
             <Link
-              href="/coming"
+              href="/auth/login"
               className="flex p-4 w-36 mb-4 bg-emerald-500 rounded-2xl"
             >
               <FontAwesomeIcon
@@ -193,7 +193,7 @@ export default function Navbar() {
               <p className="text-2xl text-white">Login</p>
             </Link>
             <Link
-              href="/coming"
+              href="/auth/signup"
               className="flex p-4 w-36 bg-emerald-500 rounded-2xl"
             >
               <FontAwesomeIcon
