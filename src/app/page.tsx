@@ -17,6 +17,7 @@ import { faCrow } from "@fortawesome/free-solid-svg-icons";
 import { faOtter } from "@fortawesome/free-solid-svg-icons";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "./navbar";
 
 export default function Home() {
   ReactGA.event({
@@ -30,91 +31,7 @@ export default function Home() {
   return (
     <main className={opensans.className}>
       <div className="min-[2000px]:max-w-screen-2xl min-[2000px]:m-auto">
-      {/* Navbar starts */}
-      <div className="grid grid-cols-3 gap-4 bg-white h-36 content-center">
-        {/* Logo and company name starts */}
-        <div className="flex flex-row ml-36 lg:ml-12 w-24">
-          <Image
-            className="rounded-full"
-            src="/petmatchpoint-logo.jpg"
-            alt=""
-            width={120}
-            height={120}
-          />
-          <span className="hidden lg:flex text-2xl items-center ml-4">
-            Pet
-            <br /> Match <br /> Point
-          </span>
-        </div>
-        {/* Logo and company name ends */}
-
-        {/* Link starts */}
-        <div className="hidden lg:flex justify-between text-2xl items-center">
-          <Link href="/coming" className="flex mr-3">
-            <FontAwesomeIcon
-              icon={faDog}
-              className="fa-solid fa-dog mr-1"
-              width={24}
-            />
-            DOGS
-          </Link>
-          <Link href="/coming" className="flex mr-3">
-            <FontAwesomeIcon
-              icon={faCat}
-              className="fa-solid fa-dog mr-1"
-              width={24}
-            />
-            CATS
-          </Link>
-          <Link href="/coming" className="flex mr-3">
-            <FontAwesomeIcon
-              icon={faFish}
-              className="fa-solid fa-dog mr-1"
-              width={24}
-            />
-            FISH
-          </Link>
-          <Link href="/coming" className="flex mr-3">
-            <FontAwesomeIcon
-              icon={faCrow}
-              className="fa-solid fa-dog mr-1"
-              width={24}
-            />
-            BIRDS
-          </Link>
-          <Link href="/coming" className="flex mr-3">
-            <FontAwesomeIcon
-              icon={faOtter}
-              className="fa-solid fa-dog mr-1"
-              width={24}
-            />
-            ADOPT
-          </Link>
-        </div>
-        {/* Link ends */}
-
-        {/* User auth starts */}
-        <div className="hidden lg:flex items-center text-right justify-end mr-8">
-          <Link href="/coming" className="flex p-4 bg-emerald-500 rounded-2xl">
-            <FontAwesomeIcon
-              icon={faRightToBracket}
-              className="fa-solid fa-dog mr-2 text-white"
-              width={24}
-            />
-            <p className="text-2xl text-white">Login</p>
-          </Link>
-          <Link href="/coming" className="flex p-4 bg-emerald-500 ml-4 rounded-2xl">
-            <FontAwesomeIcon
-              icon={faUserPlus}
-              className="fa-solid fa-dog mr-2 text-white"
-              width={24}
-            />
-            <p className="text-2xl text-white">Signup</p>
-          </Link>
-        </div>
-        {/* User auth ends */}
-      </div>
-      {/* Navbar ends */}
+      <Navbar />
 
       {/* Hero area starts */}
       <div className="flex h-[200px] lg:h-[700px] bg-[url('/hero.jpeg')] bg-cover lg:bg-center flex-col">
