@@ -30,8 +30,6 @@ export default function Home() {
   return (
     <main className={opensans.className}>
       <div className="min-[2000px]:max-w-screen-2xl min-[2000px]:m-auto">
-
-      
       {/* Navbar starts */}
       <div className="grid grid-cols-3 gap-4 bg-white h-36 content-center">
         {/* Logo and company name starts */}
@@ -51,7 +49,7 @@ export default function Home() {
         {/* Logo and company name ends */}
 
         {/* Link starts */}
-        <div className="flex justify-between text-2xl items-center">
+        <div className="hidden lg:flex justify-between text-2xl items-center">
           <Link href="/coming" className="flex mr-3">
             <FontAwesomeIcon
               icon={faDog}
@@ -96,7 +94,7 @@ export default function Home() {
         {/* Link ends */}
 
         {/* User auth starts */}
-        <div className="flex items-center text-right justify-end mr-8">
+        <div className="hidden lg:flex items-center text-right justify-end mr-8">
           <Link href="/coming" className="flex p-4 bg-emerald-500 rounded-2xl">
             <FontAwesomeIcon
               icon={faRightToBracket}
@@ -120,15 +118,15 @@ export default function Home() {
 
       {/* Hero area starts */}
       <div className="flex h-[700px] bg-[url('/hero.jpeg')] bg-center flex-col">
-        <p className="text-white text-6xl mt-24 ml-20 font-extrabold tracking-wide">
+        <p className="text-gray-500 lg:text-white lg:text-6xl md:text-2xl mt-12 lg:mt-24 ml-12 lg:ml-20 font-extrabold tracking-wide">
           Find your perfect furry <br />
           companion and embark <br /> on a lifelong <br />
           adventure of love
         </p>
-        <p className="flex flex-row ml-20 mt-4">
+        <p className="lg:flex lg:flex-row md:flex-cols ml-12 lg:ml-20 mt-4">
           <Link
             href="/coming"
-            className="flex flex-col p-12 bg-white mr-4 text-xl"
+            className="flex flex-col p-12 bg-white mr-10 lg:mr-4 text-xl"
           >
             We verify pet seller <br /> authenticity and ensure <br />{" "}
             cruelty-free breeding.{" "}
@@ -148,7 +146,7 @@ export default function Home() {
       {/* Hero area ends */}
 
       {/* Shop area starts here */}
-      <div className="bg-white grid grid-cols-4 gap-4 p-12 text-white">
+      <div className="bg-white grid lg:grid-cols-4 md:grid-cols-2 gap-4 p-12 text-white">
         <div className="bg-orange-500 px-12 py-14 rounded-2xl bg-[url('/catfood.png')] bg-left-top">
           <p className="text-4xl mb-4">New Cat food</p>
           <p className="text-2xl mb-8">Fresh & Tasty</p>
@@ -156,7 +154,7 @@ export default function Home() {
             className="px-6 py-4 bg-white text-black rounded-full"
             href="/coming"
           >
-            Show Now <span className="text-2xl -mt-8">&#10230;</span>
+            Shop Now <span className="text-2xl -mt-8">&#10230;</span>
           </Link>
         </div>
         <div className="bg-cyan-500 px-12 py-14 rounded-2xl bg-[url('/dogfood.png')] bg-left-top">
@@ -166,7 +164,7 @@ export default function Home() {
             className="px-6 py-4 bg-white text-black rounded-full"
             href="/coming"
           >
-            Show Now <span className="text-2xl -mt-8">&#10230;</span>
+            Shop Now <span className="text-2xl -mt-8">&#10230;</span>
           </Link>
         </div>
         <div className="bg-indigo-500 px-12 py-14 rounded-2xl bg-[url('/pettoys.png')] bg-left-top">
@@ -176,7 +174,7 @@ export default function Home() {
             className="px-6 py-4 bg-white text-black rounded-full"
             href="/coming"
           >
-            Show Now <span className="text-2xl -mt-8">&#10230;</span>
+            Shop Now <span className="text-2xl -mt-8">&#10230;</span>
           </Link>
         </div>
         <div className="bg-emerald-500 px-12 py-14 rounded-2xl  bg-[url('/birdfood.png')] bg-contain bg-no-repeat">
@@ -186,7 +184,7 @@ export default function Home() {
             className="px-6 py-4 bg-white text-black rounded-full"
             href="/coming"
           >
-            Show Now <span className="text-2xl -mt-8">&#10230;</span>
+            Shop Now <span className="text-2xl -mt-8">&#10230;</span>
           </Link>
         </div>
       </div>
@@ -204,7 +202,7 @@ export default function Home() {
           />
           &#9135;
         </p>
-        <div className="grid grid-cols-3 gap-12 ml-12 mr-12">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12 ml-12 mr-12">
           <div className="flex text-center flex-col">
             <Image
               src="/road-dog.jpg"
