@@ -117,13 +117,13 @@ export default function Home() {
       {/* Navbar ends */}
 
       {/* Hero area starts */}
-      <div className="flex h-[700px] bg-[url('/hero.jpeg')] bg-center flex-col">
-        <p className="text-gray-500 lg:text-white lg:text-6xl md:text-2xl mt-12 lg:mt-24 ml-12 lg:ml-20 font-extrabold tracking-wide">
+      <div className="flex h-[200px] lg:h-[700px] bg-[url('/hero.jpeg')] bg-cover lg:bg-center flex-col">
+        <p className="text-white lg:text-6xl md:text-2xl mt-12 lg:mt-24 ml-12 lg:ml-20 font-extrabold tracking-wide">
           Find your perfect furry <br />
           companion and embark <br /> on a lifelong <br />
           adventure of love
         </p>
-        <p className="lg:flex lg:flex-row md:flex-cols ml-12 lg:ml-20 mt-4">
+        <p className="hidden lg:flex lg:flex-row md:flex-cols ml-12 lg:ml-20 mt-4">
           <Link
             href="/coming"
             className="flex flex-col p-12 bg-white mr-10 lg:mr-4 text-xl"
