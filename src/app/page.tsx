@@ -33,7 +33,7 @@ export default function Home() {
       {/* Navbar starts */}
       <div className="grid grid-cols-3 gap-4 bg-white h-36 content-center">
         {/* Logo and company name starts */}
-        <div className="flex flex-row ml-12 w-24">
+        <div className="flex flex-row ml-36 lg:ml-12 w-24">
           <Image
             className="rounded-full"
             src="/petmatchpoint-logo.jpg"
@@ -41,7 +41,7 @@ export default function Home() {
             width={120}
             height={120}
           />
-          <span className="text-2xl items-center ml-4 flex">
+          <span className="hidden lg:flex text-2xl items-center ml-4">
             Pet
             <br /> Match <br /> Point
           </span>
@@ -118,10 +118,13 @@ export default function Home() {
 
       {/* Hero area starts */}
       <div className="flex h-[200px] lg:h-[700px] bg-[url('/hero.jpeg')] bg-cover lg:bg-center flex-col">
-        <p className="text-white lg:text-6xl md:text-2xl mt-12 lg:mt-24 ml-12 lg:ml-20 font-extrabold tracking-wide">
+        <p className="hidden lg:flex text-white lg:text-6xl md:text-2xl mt-12 lg:mt-24 ml-12 lg:ml-20 font-extrabold tracking-wide">
           Find your perfect furry <br />
           companion and embark <br /> on a lifelong <br />
           adventure of love
+        </p>
+        <p className="md:flex lg:hidden xl:hidden sm:flex text-white text-2xl mt-10 ml-12 font-extrabold">
+          Find your <br /> perfect <br />furry friend
         </p>
         <p className="hidden lg:flex lg:flex-row md:flex-cols ml-12 lg:ml-20 mt-4">
           <Link
