@@ -50,11 +50,11 @@ export default function Navbar() {
       </div>
       {/* Logo and company name ends */}
 
-      <div className="md:flex lg:hidden xl:hidden sm:flex ml-24 mt-4">
+      <div className="md:flex lg:hidden xl:hidden sm:flex ml-24 mt-7">
         <FontAwesomeIcon
           onClick={showMobileNavbar}
           icon={faBars}
-          className="flex text-6xl"
+          className="flex text-4xl"
           width={40}
         />
       </div>
