@@ -46,7 +46,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const [user, SetUser] = useState({});
+  const [user, SetUser] = useState<any>({});
   const [showMobileNav, SetShowMobileNav] = useState(false);
   const showMobileNavbar = () => {
     SetShowMobileNav(true);
