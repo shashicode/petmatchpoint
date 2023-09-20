@@ -42,6 +42,8 @@ import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
+
 
 import { useEffect, useState } from "react";
 
@@ -187,15 +189,15 @@ export default function Navbar() {
       ) : (
         <div className="hidden lg:flex items-center text-right justify-end mr-8">
           <Link
-            href="/coming"
+            href="/listyourpet"
             className="flex p-4 bg-emerald-500 ml-4 rounded-2xl"
           >
             <FontAwesomeIcon
-              icon={faUserPlus}
+              icon={faClipboardList}
               className="fa-solid fa-dog mr-2 mt-2 text-white"
               width={24}
             />
-            <p className="text-2xl text-white">Sell / Put for adoption</p>
+            <p className="text-2xl text-white">List your pet</p>
           </Link>
           <p
             className="hover:cursor-pointer p-2"
@@ -290,15 +292,15 @@ export default function Navbar() {
           ) : (
             <div className="flex flex-col items-center text-right justify-end mr-8">
               <Link
-                href="/coming"
+                href="/listyourpet"
                 className="flex p-4 bg-emerald-500 ml-4 rounded-2xl"
               >
                 <FontAwesomeIcon
-                  icon={faUserPlus}
+                  icon={faClipboardList}
                   className="fa-solid fa-dog mr-2 mt-2 text-white"
                   width={24}
                 />
-                <p className="text-white">Sell / Put for adoption</p>
+                <p className="text-white">List your pet</p>
               </Link>
               <p
                 className="hover:cursor-pointer p-2"
