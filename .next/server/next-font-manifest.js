@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/Users/shashishekhar/Desktop/Projects/web/petmatchpoint/src/app/page":["static/media/ed347bcde018be70-s.p.woff2"],"/Users/shashishekhar/Desktop/Projects/web/petmatchpoint/src/app/layout":["static/media/c9a5bc6a7c948fb0-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';
