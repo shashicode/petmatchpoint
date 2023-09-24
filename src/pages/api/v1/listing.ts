@@ -45,18 +45,18 @@ export default async function handler(
       if (createListing) {
         res.status(200).send({ message: "Listing Created" });
       }
-    } catch (error) {
-      res.status(400).send({ errorMessage: error });
+    } catch (error: any) {
+      res.status(400).send(error);
     }
   } else if (req.method === "GET") {
     try {
-        const readTransaction = await Listing.find({});
+        const getListing: any = await Listing.find({});
   
-        if (readTransaction) {
-          res.status(200).send({ data: readTransaction });
+        if (getListing) {
+          res.status(200).send(getListing);
         }
-      } catch (error) {
-        res.status(400).send({ errorMessage: error });
+      } catch (error: any) {
+        res.status(400).send(error);
       }
   } else if (req.method === "PATCH") {
     try {
@@ -74,8 +74,8 @@ export default async function handler(
           res.status(200).send({ message: "Listing Updated" });
         }
         console.log(patchListing)
-      } catch (error) {
-        res.status(400).send({ errorMessage: error });
+      } catch (error: any) {
+        res.status(400).send(error);
       }
   } else if (req.method === "DELETE") {
     try {
@@ -88,8 +88,8 @@ export default async function handler(
         if (listingDeleted) {
           res.status(200).send({ message: "Listing Deleted" });
         }
-      } catch (error) {
-        res.status(400).send({ errorMessage: error });
+      } catch (error: any) {
+        res.status(400).send(error);
       }
   } else {
     // Handle any other HTTP method

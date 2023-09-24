@@ -1,0 +1,8 @@
+{
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/coming/page": "/coming",
+  "/listyourpet/page": "/listyourpet",
+  "/auth/signup/page": "/auth/signup",
+  "/auth/login/page": "/auth/login"
+}
