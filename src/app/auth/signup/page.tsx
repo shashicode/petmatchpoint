@@ -87,7 +87,7 @@ export default function AuthPageSignup() {
   const signupWithGoogle = () => {
     const auth = getAuth();
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then((result: any) => {
         // console.log('custom signup: ', result.user.auth)
         const currentUser = result.user.auth.currentUser.auth.currentUser;
 
