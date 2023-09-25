@@ -50,16 +50,16 @@ export default function Home() {
           >
             We verify pet seller <br /> authenticity and ensure <br />{" "}
             cruelty-free breeding.{" "}
-            <p className="text-xl mt-4 bg-yellow-700 p-2 text-white">
+            {/* <p className="text-xl mt-4 bg-yellow-700 p-2 text-white">
               Read More &#10230;
-            </p>
+            </p> */}
           </Link>
           <Link href="/coming" className="flex flex-col p-12 bg-white text-xl">
             We found new home for <br /> 62 furry friends <br />
             so far, more to go
-            <p className="text-xl mt-4 bg-yellow-700 p-2 text-white">
+            {/* <p className="text-xl mt-4 bg-yellow-700 p-2 text-white">
               Read more &#10230;
-            </p>
+            </p> */}
           </Link>
         </p>
       </div>
