@@ -3,7 +3,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,7 +28,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
 } from "firebase/auth";
 import { useState } from "react";
 
@@ -36,19 +36,50 @@ const provider = new GoogleAuthProvider();
 
 export default function AuthPageSignup() {
   const { push } = useRouter();
+
+  async function createUser(url = "", data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
+
   const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          push('/');
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/auth.user
-          const uid = user.uid;
-          // ...
-        } else {
-          // User is signed out
-          // ...
-        }
-      });
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      push("/");
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      const uid = user.uid;
+      // const userData = {
+      //   email : currentUser.email,
+      //   displayName: currentUser.displayName,
+      //   phoneNumber : currentUser.phoneNumber,
+      //   photoURL: currentUser.photoURL,
+      //   emailVerified : currentUser.emailVerified,
+      //   phoneVerified : false,
+      //   displayImage: currentUser.photoURL
+      // }
+      // createUser(`/api/v1/user`, userData).then((data) => {
+      //   console.log('After api call: ', data);
+      // });
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
 
   const [email, SetEmail] = useState("");
   const [pass, SetPass] = useState("");
@@ -57,7 +88,21 @@ export default function AuthPageSignup() {
     const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log("google signup successfull", result);
+        // console.log('custom signup: ', result.user.auth)
+        const currentUser = result.user.auth.currentUser.auth.currentUser;
+
+        const userData = {
+          email: currentUser.email,
+          displayName: currentUser.displayName,
+          phoneNumber: currentUser.phoneNumber,
+          photoURL: currentUser.photoURL,
+          emailVerified: currentUser.emailVerified,
+          phoneVerified: false,
+          displayImage: currentUser.photoURL,
+        };
+        createUser(`/api/v1/user`, userData).then((data) => {
+          // console.log("After api call: ", data);
+        });
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
@@ -67,7 +112,7 @@ export default function AuthPageSignup() {
         // ...
       })
       .catch((error) => {
-        console.log("google signup failure", error);
+        // console.log("google signup failure", error);
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -80,21 +125,61 @@ export default function AuthPageSignup() {
   };
 
   const signupWithEmailPass = (email: string, password: string) => {
+    if (password.length < 6) {
+      SetFormErrors({
+        emailError: false,
+        passError: true,
+      });
+      SetErrorMsg("Password must be minimum 6 characters long");
+      return;
+    } else {
+      SetFormErrors({
+        emailError: false,
+        passError: false,
+      });
+      SetErrorMsg("");
+    }
+
+    if (formErrors.emailError) {
+      SetErrorMsg("Please provide a valid email");
+      return;
+    }
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        console.log("Custom registration done: ", userCredential);
         const user = userCredential.user;
+        const currentUser = user.auth.currentUser.auth.currentUser;
+
+        const userData = {
+          email: currentUser.email,
+          displayName: currentUser.displayName,
+          phoneNumber: currentUser.phoneNumber,
+          photoURL: currentUser.photoURL,
+          emailVerified: currentUser.emailVerified,
+          phoneVerified: false,
+          displayImage: currentUser.photoURL,
+        };
+        createUser(`/api/v1/user`, userData).then((data) => {
+          // console.log("After api call: ", data);
+        });
         // ...
       })
       .catch((error) => {
-        console.log("Custom registration failed: ", error);
+        // console.log("Custom registration failed: ", error);
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
       });
   };
+
+  const [formErrors, SetFormErrors] = useState({
+    emailError: false,
+    passError: false,
+  });
+
+  const [errorMsg, SetErrorMsg] = useState("");
+
   return (
     <section className="h-screen">
       <div className="container h-full px-6 py-24">
@@ -114,9 +199,7 @@ export default function AuthPageSignup() {
                   id="exampleFormControlInput3"
                   placeholder="Email address"
                 />
-                <label
-                  className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                >
+                <label className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
                   Email address
                 </label>
               </div>
@@ -131,11 +214,12 @@ export default function AuthPageSignup() {
                   id="exampleFormControlInput33"
                   placeholder="Password"
                 />
-                <label
-                  className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                >
+                <label className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[2rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
                   Password
                 </label>
+                {formErrors.passError && (
+                  <p className="text-red-500 font-bold text-lg">{errorMsg}</p>
+                )}
               </div>
               {/* <div className="mb-6 flex items-center justify-between">
                 <div className="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">

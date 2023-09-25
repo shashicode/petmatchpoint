@@ -11,6 +11,9 @@ export interface Listings extends mongoose.Document {
   plan_type: string,
   currency: string,
   country: String,
+  is_active: boolean,
+  is_deleted: boolean,
+  img_urls: Array<string>,
   listing_end_date: {},
   created_at: {},
   updated_at: {},
@@ -61,6 +64,19 @@ const ListingSchema = new mongoose.Schema<Listings>(
     plan_type: {
       type: String,
       default: "lifetime",
+    },
+    is_active: {
+      type: Boolean,
+      default: true
+    },
+    is_deleted: {
+      type: Boolean,
+      default: false
+    },
+    img_urls: {
+      type: [],
+      default: [],
+      required: false
     },
     created_at: {
       type: Date,
