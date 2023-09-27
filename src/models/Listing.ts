@@ -11,6 +11,7 @@ export interface Listings extends mongoose.Document {
   plan_type: string,
   currency: string,
   country: String,
+  category: String,
   is_active: boolean,
   is_deleted: boolean,
   img_urls: Array<string>,
@@ -72,6 +73,10 @@ const ListingSchema = new mongoose.Schema<Listings>(
     is_deleted: {
       type: Boolean,
       default: false
+    },
+    category: {
+      type: String,
+      required: false
     },
     img_urls: {
       type: [],
