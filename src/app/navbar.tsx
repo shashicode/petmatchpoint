@@ -189,7 +189,7 @@ export default function Navbar() {
       ) : (
         <div className="hidden lg:flex items-center text-right justify-end mr-8">
           <Link
-            href="/coming"
+            href="/listyourpet"
             className="flex p-4 bg-emerald-500 ml-4 rounded-2xl"
           >
             <FontAwesomeIcon
@@ -292,7 +292,7 @@ export default function Navbar() {
           ) : (
             <div className="flex flex-col items-center text-right justify-end mr-8">
               <Link
-                href="/coming"
+                href="/listyourpet"
                 className="flex p-4 bg-emerald-500 ml-4 rounded-2xl"
               >
                 <FontAwesomeIcon
