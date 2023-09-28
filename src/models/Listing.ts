@@ -94,4 +94,4 @@ const ListingSchema = new mongoose.Schema<Listings>(
   }
 );
 
-export default mongoose.models.Listings || mongoose.model<Listings>('listings', ListingSchema);
+export default mongoose.models.Listings || mongoose.model<Listings>('Listings', ListingSchema);

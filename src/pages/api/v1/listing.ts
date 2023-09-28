@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/lib/dbConnect";
-import Listing from "@/models/Listing";
+import Listings from "@/models/Listing";
 
 type ResponseData = {
   message: string;
@@ -29,7 +29,7 @@ export default async function handler(
         plan_type,
       } = req.body;
 
-      const createListing = await Listing.create({
+      const createListing = await Listings.create({
         title,
         desc,
         price,
@@ -52,7 +52,7 @@ export default async function handler(
     }
   } else if (req.method === "GET") {
     try {
-        const getListing: any = await Listing.find({});
+        const getListing: any = await Listings.find({});
   
         if (getListing) {
           res.status(200).send(getListing);
@@ -70,7 +70,7 @@ export default async function handler(
   
         console.log(filter, update)
 
-        const patchListing = await Listing.findOneAndUpdate(filter, update);
+        const patchListing = await Listings.findOneAndUpdate(filter, update);
   
         if (patchListing) {
           res.status(200).send({ message: "Listing Updated" });
@@ -85,7 +85,7 @@ export default async function handler(
 
         const filter = { id: val.id };
 
-        const listingDeleted = await Listing.deleteOne(filter);
+        const listingDeleted = await Listings.deleteOne(filter);
   
         if (listingDeleted) {
           res.status(200).send({ message: "Listing Deleted" });
