@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/lib/dbConnect";
 import Listings from "@/models/Listing";
+import { equal } from "assert";
 
 type ResponseData = {
   message: string;
@@ -11,7 +12,6 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   await dbConnect();
-
   if (req.method === "POST") {
     try {
       const {
@@ -25,6 +25,7 @@ export default async function handler(
         category,
         listing_end_date,
         user_phone,
+        img_urls,
         user_email,
         plan_type,
       } = req.body;
@@ -37,6 +38,7 @@ export default async function handler(
         location,
         currency,
         country,
+        img_urls,
         category,
         listing_end_date,
         user_phone,
@@ -45,14 +47,25 @@ export default async function handler(
       });
 
       if (createListing) {
-        res.status(200).send({ message: "Listing Created" });
+        const dataToSend = { message: "Listing Created", metadata: createListing }
+        res.status(200).send(dataToSend);
       }
     } catch (error: any) {
       res.status(400).send(error);
     }
-  } else if (req.method === "GET") {
+  } else if (req.method === "GET" && req.query.listing_id === undefined) {
     try {
         const getListing: any = await Listings.find({});
+  
+        if (getListing) {
+          res.status(200).send(getListing);
+        }
+      } catch (error: any) {
+        res.status(400).send(error);
+      }
+  } else if (req.method === "GET" && req.query.listing_id) {
+    try {
+        const getListing: any = await Listings.findById(req.query.listing_id);
   
         if (getListing) {
           res.status(200).send(getListing);

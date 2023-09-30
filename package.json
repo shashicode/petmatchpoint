@@ -31,6 +31,7 @@
     "react-ga4": "^2.1.0",
     "react-hook-form": "^7.46.2",
     "react-phone-number-input": "^3.3.6",
+    "reactjs-nextjs-carousel": "^0.0.7",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   }

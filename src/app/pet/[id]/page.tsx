@@ -1,17 +1,29 @@
+"use client";
+
 import axios from "axios";
 import Link from "next/link";
+import { useEffect } from "react";
+import Carousel  from 'reactjs-nextjs-carousel';
 
-async function getData() {
-  try {
-    const res = await axios.get("http://localhost:3000/api/v1/listing");
-    return res;
-  } catch (error) {
-    console.log("request failed: ", error);
+export default async function SinglePet({ params }: any) {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  async function getData() {
+    try {
+      const res = await axios.get(
+        `http://localhost:3000/api/v1/listing?listing_id=${params.id}`
+      );
+      return res;
+    } catch (error) {
+      console.log("request failed: ", error);
+    }
   }
-}
-
-export default async function Category() {
-  const listingData = await getData();
+  const listingData: any = await getData();
   let exchangeRatesSymbols: any = {
     SATS: "\u738b",
     BTC: "m\u0e3f",
@@ -138,40 +150,42 @@ export default async function Category() {
     <div className="bg-white">
       {listingData && listingData.statusText === "OK" && (
         <div className="">
-          {listingData.data.map((item: any) => {
-            return (
-              <Link href={`/pet/${item._id}`}>
-                <div className="flex pl-12 pt-8" key={item._id}>
-                  <div className="flex w-full mr-12 border-solid border-black border-2">
-                    <div className="mr-8 h-[300px] w-[300px]">
-                      {/* {item.img_urls &&
-                        item.img_urls.map((singleImage: any) => { */}
-                          {/* return ( */}
-                              <img src={item.img_urls[0]} width={300} height={300} />
-                          {/* );
-                        })} */}
-                    </div>
-                    <div className="mt-8">
-                      <p className="text-4xl font-extrabold uppercase">
-                        {item.title}
-                      </p>
-                      <p className="text-xl mt-4 max-w-2xl">{item.desc}</p>
-                      <p className="text-4xl font-extrabold font-bold mt-4">
-                        <span
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              exchangeRatesSymbols[item.currency.toUpperCase()],
-                          }}
-                        />
-                        &nbsp;
-                        <span>{item.price}</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+          <div className="flex pl-12 pt-8" key={listingData.data._id}>
+            <div className="flex w-full mr-12 border-solid border-black border-2">
+              <div className="mr-8">
+              <Carousel slides={listingData.data.img_urls} autoSlide={true} carouselWidth={"30rem"} effect="fade" autoSlideInterval={3000}/>
+                {/* <Slider {...settings}>
+                  {listingData.data.img_urls.map((singleImage: any) => {
+                      return (
+                        <div>
+                          <img src={singleImage} width={300} height={300} />
+                        </div>
+                      );
+                    })} */}
+                {/* </Slider> */}
+              </div>
+              <div className="mt-8">
+                <p className="text-4xl font-extrabold uppercase">
+                  {listingData.data.title}
+                </p>
+                <p className="text-xl mt-4 max-w-2xl">
+                  {listingData.data.desc}
+                </p>
+                <p className="text-4xl font-extrabold font-bold mt-4">
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        exchangeRatesSymbols[
+                          listingData.data.currency.toUpperCase()
+                        ],
+                    }}
+                  />
+                  &nbsp;
+                  <span>{listingData.data.price}</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

@@ -9,7 +9,7 @@ const opensans = Open_Sans({ subsets: ["latin"] });
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -190,14 +190,14 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center text-right justify-end mr-8">
           <Link
             href="/listyourpet"
-            className="flex p-4 bg-emerald-500 ml-4 rounded-2xl"
+            className="flex p-4 bg-emerald-500 ml-4 rounded-sm"
           >
             <FontAwesomeIcon
               icon={faClipboardList}
               className="fa-solid fa-dog mr-2 mt-2 text-white"
               width={24}
             />
-            <p className="text-2xl text-white">List your pet</p>
+            <p className="text-xl font-bold text-white">LIST YOUR PET</p>
           </Link>
           <p
             className="hover:cursor-pointer p-2"

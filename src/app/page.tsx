@@ -11,13 +11,12 @@ ReactGA.initialize('G-0THRQG1EXX');
 // Font icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDog } from "@fortawesome/free-solid-svg-icons";
-import { faCat } from "@fortawesome/free-solid-svg-icons";
-import { faFish } from "@fortawesome/free-solid-svg-icons";
-import { faCrow } from "@fortawesome/free-solid-svg-icons";
-import { faOtter } from "@fortawesome/free-solid-svg-icons";
-import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "./navbar";
+// import { faCat } from "@fortawesome/free-solid-svg-icons";
+// import { faFish } from "@fortawesome/free-solid-svg-icons";
+// import { faCrow } from "@fortawesome/free-solid-svg-icons";
+// import { faOtter } from "@fortawesome/free-solid-svg-icons";
+// import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
+// import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   ReactGA.event({
@@ -31,7 +30,7 @@ export default function Home() {
   return (
     <main className={opensans.className}>
       <div className="min-[2000px]:max-w-screen-2xl min-[2000px]:m-auto">
-      <Navbar />
+      
 
       {/* Hero area starts */}
       <div className="flex h-[200px] lg:h-[700px] bg-[url('/hero.jpeg')] bg-cover lg:bg-center flex-col">
@@ -45,21 +44,21 @@ export default function Home() {
         </p>
         <p className="hidden lg:flex lg:flex-row md:flex-cols ml-12 lg:ml-20 mt-4">
           <Link
-            href="/coming"
+            href="/category/all"
             className="flex flex-col p-12 bg-white mr-10 lg:mr-4 text-xl"
           >
             We verify pet seller <br /> authenticity and ensure <br />{" "}
             cruelty-free breeding.{" "}
-            {/* <p className="text-xl mt-4 bg-yellow-700 p-2 text-white">
-              Read More &#10230;
-            </p> */}
+            <p className="text-xl mt-4 bg-yellow-700 p-2 text-white">
+              Explore more &#10230;
+            </p>
           </Link>
-          <Link href="/coming" className="flex flex-col p-12 bg-white text-xl">
+          <Link href="/category/all" className="flex flex-col p-12 bg-white text-xl">
             We found new home for <br /> 62 furry friends <br />
             so far, more to go
-            {/* <p className="text-xl mt-4 bg-yellow-700 p-2 text-white">
-              Read more &#10230;
-            </p> */}
+            <p className="text-xl mt-4 bg-yellow-700 p-2 text-white">
+              Explore more &#10230;
+            </p>
           </Link>
         </p>
       </div>
