@@ -130,7 +130,7 @@ export default function ListAPet() {
           <div className="flex">
             {imgList.map((item: any) => {
               return (
-                <img className="max-w-xs" width={250} src={item} alt="random" />
+                <img className="max-w-xs" width={250} src={item} alt="random" key={Math.random()}/>
               );
             })}
           </div>
