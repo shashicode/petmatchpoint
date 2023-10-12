@@ -27,7 +27,7 @@ export default async function SinglePet({ params }: any) {
   async function getData() {
     try {
       const res = await axios.get(
-        `https://www.petmatchpoint.com/api/v1/listing?listing_id=${params.id}`
+        `http://localhost:3000/api/v1/listing?listing_id=${params.id}`
       );
       return res;
     } catch (error) {
@@ -160,8 +160,8 @@ export default async function SinglePet({ params }: any) {
   return (
     <div className="bg-white">
       {listingData && listingData.statusText === "OK" && (
-        <div className="">
-          <div className="pl-12 pt-8" key={listingData.data._id}>
+        <div className="" key={listingData.data._id}>
+          <div className="pl-12 pt-8">
             <div className="flex flex-col w-full mr-12">
               <div className="mr-8 h-[400px]">
                 <Carousel
