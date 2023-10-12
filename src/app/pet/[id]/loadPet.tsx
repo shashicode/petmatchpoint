@@ -44,7 +44,7 @@ export default async function LoadPet({ params }: any) {
   async function getData() {
     try {
       const res = await axios.get(
-        `http://localhost:3000/api/v1/listing?listing_id=${params.id}`
+        `${process.env.API_ENDPOINT}/api/v1/listing?listing_id=${params.id}`
       );
       return res;
     } catch (error) {

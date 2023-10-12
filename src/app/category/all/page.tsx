@@ -3,7 +3,7 @@ import Link from "next/link";
 
 async function getData() {
   try {
-    const res = await axios.get("http://localhost:3000/api/v1/listing");
+    const res = await axios.get(`${process.env.API_ENDPOINT}/api/v1/listing`);
     return res;
   } catch (error) {
     console.log("request failed: ", error);
