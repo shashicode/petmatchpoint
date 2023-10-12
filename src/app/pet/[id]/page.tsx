@@ -1,27 +1,27 @@
 "use client";
 
 import axios from "axios";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Carousel from "reactjs-nextjs-carousel";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCsi3zqlMcsXigNHGxoIeseG-NqdIwtFB0",
-  authDomain: "petmatchpoint-4d9de.firebaseapp.com",
-  projectId: "petmatchpoint-4d9de",
-  storageBucket: "petmatchpoint-4d9de.appspot.com",
-  messagingSenderId: "298616963371",
-  appId: "1:298616963371:web:d71c311dde8eae17f8456e",
-  measurementId: "G-TDH14HCCB9",
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCsi3zqlMcsXigNHGxoIeseG-NqdIwtFB0",
+//   authDomain: "petmatchpoint-4d9de.firebaseapp.com",
+//   projectId: "petmatchpoint-4d9de",
+//   storageBucket: "petmatchpoint-4d9de.appspot.com",
+//   messagingSenderId: "298616963371",
+//   appId: "1:298616963371:web:d71c311dde8eae17f8456e",
+//   measurementId: "G-TDH14HCCB9",
+// };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 // let isLoggedIn = false;
 
 export default async function SinglePet({ params }: any) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const listingData: any = await getData();
 
   async function getData() {
