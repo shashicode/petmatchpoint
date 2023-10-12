@@ -21,7 +21,7 @@ import { faDog } from "@fortawesome/free-solid-svg-icons";
 
 async function getData() {
   try {
-    const res = await axios.get(`${process.env.API_ENDPOINT}/api/v1/listing`);
+    const res = await axios.get(`https://www.petmatchpoint.com/api/v1/listing`);
     return res;
   } catch (error) {
     console.log("request failed: ", error);
