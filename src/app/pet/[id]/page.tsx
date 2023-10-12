@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import axios from "axios";
 // import { useEffect, useState } from "react";
@@ -164,15 +164,21 @@ export default async function SinglePet({ params }: any) {
           <div className="pl-12 pt-8">
             <div className="flex flex-col w-full mr-12">
               <div className="mr-8 h-[400px]">
-                <Carousel
+                {/* <Carousel
                   slides={listingData.data.img_urls}
                   autoSlide={true}
                   carouselWidth={"50rem"}
                   effect="fade"
                   autoSlideInterval={8000}
+                /> */}
+                <img
+                  src={listingData.data.img_urls[0]}
+                  width={555}
+                  height={200}
+                  alt="featured dog"
                 />
               </div>
-              <div className="mt-28">
+              <div className="mt-40">
                 <p className="text-4xl font-extrabold uppercase">
                   {listingData.data.title}
                 </p>
@@ -191,7 +197,12 @@ export default async function SinglePet({ params }: any) {
                   &nbsp;
                   <span>{listingData.data.price}</span>
                 </p>
-                <p className="mb-20">Contact seller on: <span className="font-bold">{listingData.data.user_phone}</span></p>
+                <p className="mb-20">
+                  Contact seller on:{" "}
+                  <span className="font-bold">
+                    {listingData.data.user_phone}
+                  </span>
+                </p>
               </div>
             </div>
           </div>
