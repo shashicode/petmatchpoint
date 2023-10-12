@@ -92,7 +92,7 @@ export default function ListAPet() {
     <section className="flex justify-center p-10">
       <div className="w-[800px] bg-white p-10 px-20 rounded-lg">
         {imgList && imgList.length < 3 && (
-          <div className="p-4">
+          <div className="p-4" key={Math.random()}>
             <div className="w-[700px] bg-white p-8 -ml-20 px-20 rounded-lg flex justify-start">
               <button
                 className="p-5 border-solid border-2 border-black rounded-lg"

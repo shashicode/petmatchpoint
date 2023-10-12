@@ -140,8 +140,8 @@ export default async function Category() {
         <div className="">
           {listingData.data.map((item: any) => {
             return (
-              <Link href={`/pet/${item._id}`}>
-                <div className="flex pl-12 pt-8" key={item._id}>
+              <Link href={`/pet/${item._id}`} key={item._id}>
+                <div className="flex pl-12 pt-8">
                   <div className="flex w-full mr-12 border-solid border-black border-2">
                     <div className="mr-8 h-[300px] w-[300px]">
                       {/* {item.img_urls &&
