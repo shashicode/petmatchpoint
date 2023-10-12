@@ -20,10 +20,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // let isLoggedIn = false;
 
-export default async function SinglePet({ params }: any) {
+export default async function LoadPet({ params }: any) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+//   const [listingData, setListingData] = useState()
   const listingData: any = await getData();
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
 
+    // async function fetchData () {
+    //   const data: any = await getData();
+    //   setListingData(data);
+    // }
+    // fetchData()
+
+  }, []);
   async function getData() {
     try {
       const res = await axios.get(
@@ -172,7 +189,7 @@ export default async function SinglePet({ params }: any) {
                   autoSlideInterval={8000}
                 />
               </div>
-              <div className="mt-28">
+              <div className="mt-36">
                 <p className="text-4xl font-extrabold uppercase">
                   {listingData.data.title}
                 </p>
@@ -191,7 +208,12 @@ export default async function SinglePet({ params }: any) {
                   &nbsp;
                   <span>{listingData.data.price}</span>
                 </p>
-                <p className="mb-20">Contact seller on: <span className="font-bold">{listingData.data.user_phone}</span></p>
+
+                {isLoggedIn ? (
+                  <p>{listingData.data.user_phone}</p>
+                ) : (
+                  <p>Get number</p>
+                )}
               </div>
             </div>
           </div>

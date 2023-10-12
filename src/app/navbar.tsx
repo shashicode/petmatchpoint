@@ -91,6 +91,8 @@ export default function Navbar() {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 bg-white h-36 content-center">
       {/* Logo and company name starts */}
+      <Link href="/">
+
       <div className="flex flex-row ml-12 lg:ml-12 w-24">
         <Image
           className="rounded-full"
@@ -104,6 +106,8 @@ export default function Navbar() {
           <br /> Match <br /> Point
         </span>
       </div>
+      </Link>
+
       {/* Logo and company name ends */}
 
       <div className="md:flex lg:hidden xl:hidden sm:flex ml-24 mt-7">
@@ -117,7 +121,7 @@ export default function Navbar() {
 
       {/* Link starts */}
       <div className="hidden lg:flex justify-between text-2xl items-center">
-        <Link href="/auth/signup" className="flex mr-3">
+        <Link href="/category/all" className="flex mr-3">
           <FontAwesomeIcon
             icon={faDog}
             className="fa-solid fa-dog mr-1 mt-1"
@@ -125,7 +129,7 @@ export default function Navbar() {
           />
           DOGS
         </Link>
-        <Link href="/auth/signup" className="flex mr-3">
+        <Link href="/category/all" className="flex mr-3">
           <FontAwesomeIcon
             icon={faCat}
             className="fa-solid fa-dog mr-1 mt-1"
@@ -133,7 +137,7 @@ export default function Navbar() {
           />
           CATS
         </Link>
-        <Link href="/auth/signup" className="flex mr-3">
+        <Link href="/category/all" className="flex mr-3">
           <FontAwesomeIcon
             icon={faFish}
             className="fa-solid fa-dog mr-1 mt-1"
@@ -141,7 +145,7 @@ export default function Navbar() {
           />
           FISH
         </Link>
-        <Link href="/auth/signup" className="flex mr-3">
+        <Link href="/category/all" className="flex mr-3">
           <FontAwesomeIcon
             icon={faCrow}
             className="fa-solid fa-dog mr-1 mt-1"
@@ -149,7 +153,7 @@ export default function Navbar() {
           />
           BIRDS
         </Link>
-        <Link href="/auth/signup" className="flex mr-3">
+        <Link href="/category/all" className="flex mr-3">
           <FontAwesomeIcon
             icon={faOtter}
             className="fa-solid fa-dog mr-1 mt-1"
