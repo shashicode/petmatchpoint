@@ -27,7 +27,7 @@ export default async function SinglePet({ params }: any) {
   async function getData() {
     try {
       const res = await axios.get(
-        `http://localhost:3000/api/v1/listing?listing_id=${params.id}`
+        `https://www.petmatchpoint.com/api/v1/listing?listing_id=${params.id}`
       );
       return res;
     } catch (error) {
